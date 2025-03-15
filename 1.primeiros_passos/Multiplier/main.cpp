@@ -8,8 +8,10 @@ int multiplyNumbers(int num1, int num2){
 
 int main(){
 
-    int num1 {12};
-    int num2 {3};
+    int num1;
+    int num2;
+
+    std::cin >> num1 >> num2;
 
     int mult = multiplyNumbers(num1, num2);
 
