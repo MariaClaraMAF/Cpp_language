@@ -6,28 +6,20 @@ string ltrim(const string &);
 string rtrim(const string &);
 
 
+
 int main()
 {
     string n_temp;
     getline(cin, n_temp);
 
     int n = stoi(ltrim(rtrim(n_temp)));
-
-    map<int, string> number_names = {};
-    number_names[1] = "one";
-    number_names[2] = "two";
-    number_names[3] = "three";
-    number_names[4] = "four";
-    number_names[5] = "five";
-    number_names[6] = "six";
-    number_names[7] = "seven";
-    number_names[8] = "eight";
-    number_names[9] = "nine";
     
-    if( n <= 9){
-        cout << number_names[n];
-    }else {
-        cout << "Greater than 9";
+    string words[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+
+    if (n >= 1 && n <= 9) {
+        cout << words[n - 1] << endl; 
+    } else {
+        cout << "Greater than 9" << endl;
     }
 
     return 0;
