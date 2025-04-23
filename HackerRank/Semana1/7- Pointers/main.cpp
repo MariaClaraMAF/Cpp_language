@@ -1,31 +1,26 @@
-#include <cmath>
-#include <cstdio>
-#include <vector>
 #include <iostream>
-#include <algorithm>
+#include <cmath> // para std::abs
 using namespace std;
 
-
-void atualiza(int *a, int *b){
-    int aux1, aux2;
-    aux1 = *a;
-    aux2 = *b;
-    *a = aux1+aux2;
-    *b = abs(aux1-aux2);
-
+void atualiza(int *a, int *b) {
+    int aux1 = *a;
+    int aux2 = *b;
+    *a = aux1 + aux2;
+    *b = std::abs(aux1 - aux2); // uso explícito de std::abs
 }
 
 int main() {
     int end1, end2;
-    int *a, *b;
+    int *a = &end1;
+    int *b = &end2;
 
-    a = &end1;
-    b = &end2;
+    cin >> end1 >> end2;
+    atualiza(a, b);
+    cout << end1 << endl << end2 << endl;
 
-    scanf("%d %d", &end1, end2);
-    atualiza(a,b);
-    cout << &end1 << endl;
-    cout << &end2 << endl;
+    return 0;
+}
+
     // /* Enter your code here. Read input from STDIN. Print output to STDOUT */
     // int *a{nullptr};
     // int *b{nullptr};
@@ -37,7 +32,4 @@ int main() {
     // // Acessando o endereço do ponteiro
     // cout << &a << endl;
     // cout << &b << endl;
-    
-    
-    return 0;
-}
+
