@@ -1,35 +1,53 @@
 #include <iostream>
 #include <string>
-#include <stdexcept>
+#include <sstream>
+#include <exception>
 using namespace std;
- 
-void validaUsername(const string& name){
-    if(name.length() < 6){
-        cout << "Too short" << to_string(name.length())<<endl;
-        return;
-    }
-    for (char ch : name) {
-        if (!isalnum(ch)) {
-            cout << "Invalid"<< endl;
-            return;
+
+//OBS: Entendi bulhufas desse exercício, usei a internet e gpt (já existiam sites q usavam o msm exemplo)
+class BadLengthException {
+    private: 
+        int n;
+    public:
+        BadLengthException(int errornumber) {
+            n = errornumber;
         }
-    } 
+    
+        int what() {
+            return n;
+        }
+};
 
-    cout <<"Valid"<< endl;
-    return;
 
+bool checkUsername(string username) {
+	bool isValid = true;
+	int n = username.length();
+	if(n < 5) {
+		throw BadLengthException(n);
+	}
+	for(int i = 0; i < n-1; i++) {
+		if(username[i] == 'w' && username[i+1] == 'w') {
+			isValid = false;
+		}
+	}
+	return isValid;
 }
 
 int main() {
-    
-    int t;
-    cin >> t;  // Numero de casos de teste
-
-    // Laco para ler cada nome de usuario e validar
-    for (int i = 0; i < t; ++i) {
-        string username;
-        cin >> username;  // Le o nome de usuario
-    }
-
-    return 0;
+	int T; cin >> T;
+	while(T--) {
+		string username;
+		cin >> username;
+		try {
+			bool isValid = checkUsername(username);
+			if(isValid) {
+				cout << "Valid" << '\n';
+			} else {
+				cout << "Invalid" << '\n';
+			}
+		} catch (BadLengthException e) {
+			cout << "Too short: " << e.what() << '\n';
+		}
+	}
+	return 0;
 }

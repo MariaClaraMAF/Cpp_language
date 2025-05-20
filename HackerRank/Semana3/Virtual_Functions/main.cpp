@@ -5,28 +5,84 @@
 #include <algorithm>
 using namespace std;
 
+int id_p = 0;
+int id_s = 0;
 
-int main() {
-    string a, b;
-    cin >> a;
-    cin >> b;
+
+class Person{
+    public:
+    string name;
+    int age;
     
-    int aux1 = a.size();
-    int aux2 = b.size();
+    virtual void getdata(){}
+    virtual void putdata(){}
     
+};
+
+class Professor : public Person{
+    public:
+    int pub;
+    int cur_id;
     
-    string c = a+b;
+    Professor(){
+        cur_id = ++id_p;
+    }
     
-    char aux3 = a[0];
-    char aux4 = b[0];
+    void getdata()override{
+        cin >> name >> age>>pub; 
+    }
     
-    a[0] = aux4;
-    b[0]= aux3;
+    void putdata()override{
+        cout << name << " " << age << " " << pub << " " << cur_id << endl;
+    }
+};
+
+class Student : public Person{
+    public:
+    int marks[6];
+    int cur_id;
+    int sum=0; 
     
-    cout << aux1 << " " << aux2 << endl;
-    cout << c << endl;
-    cout << a<< " " << b << endl;
+    Student(){
+        cur_id = ++id_s;
+    }
     
-      
+    void getdata()override{
+        cin >> name >> age;
+        for(int i=0; i<6;i++){
+            cin >>marks[i];
+            sum += marks[i];
+        }
+    }
+    
+    void putdata()override{
+          cout << name << " " << age << " " << sum << " " << cur_id << endl;
+    }
+};
+
+int main(){
+
+    int n, val;
+    cin>>n; //The number of objects that is going to be created.
+    Person *per[n];
+
+    for(int i = 0;i < n;i++){
+
+        cin>>val;
+        if(val == 1){
+            // If val is 1 current object is of type Professor
+            per[i] = new Professor;
+
+        }
+        else per[i] = new Student; // Else the current object is of type Student
+
+        per[i]->getdata(); // Get the data from the user.
+
+    }
+
+    for(int i=0;i<n;i++)
+        per[i]->putdata(); // Print the required output for each object.
+
     return 0;
+
 }
