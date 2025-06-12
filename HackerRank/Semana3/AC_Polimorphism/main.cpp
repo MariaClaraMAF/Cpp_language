@@ -1,3 +1,10 @@
+/*
+    essa aqui eu tentei mto e n entendi bulhufas, depois se puder me explicar agradeço!
+
+*/
+
+
+
 #include <cmath>
 #include <cstdio>
 #include <vector>

@@ -54,4 +54,6 @@ int main () {
    entendi mais sobre e consegui fazer
    É uma classe template com tipo genérico, há uma função com tipo genérico também e
    uma que aceita apenas string.
+
+   Tive um outro problema que quando submeto no HackerRank fala que execeu o limite ai n da pra rodar
 */

@@ -14,6 +14,8 @@ Implementar a função update_val(int new_val):
         Chamar B::func() para multiplicar por 3.
 
         Chamar C::func() para multiplicar por 5.
+
+        Usei C++14 nessa e parte do código veio junto
 */
 
 #include<iostream>

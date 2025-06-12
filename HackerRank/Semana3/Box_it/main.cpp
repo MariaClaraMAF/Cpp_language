@@ -23,7 +23,7 @@ using namespace std;
 //Overload operator << as specified
 //ostream& operator<<(ostream& out, Box& B)
 
-//usei o C++14 no hacker rank
+//usei o C++14 no hacker rank e tive dificuldade pra krlh nesse
 
 using namespace std;
 
@@ -120,3 +120,4 @@ int main()
 {
 	check2();
 }
+
